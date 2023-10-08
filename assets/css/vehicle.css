@@ -1,0 +1,29 @@
+.gfield--type-vehicle{
+  --orange: rgb( 233, 161, 59 );
+  --blue: rgb( 43, 51, 65 );
+}
+
+.gfield--type-vehicle .vehicle-buttons-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.gfield--type-vehicle .vehicle-field-button{
+  margin: 0 10px;
+  padding: 40px 100px;
+  background: #fff;
+  color: var(--blue);
+  font-weight: 900;
+  font-size: 16px;
+  border: 1px solid var(--orange);
+  border-radius: 5px;
+  transition: .3s all ease;
+  cursor: pointer;
+}
+
+.gfield--type-vehicle .vehicle-field-button:hover,
+.gfield--type-vehicle .vehicle-field-button:focus,
+.gfield--type-vehicle .vehicle-field-button.selected{
+  background: var(--orange);
+  color: #fff;
+}
