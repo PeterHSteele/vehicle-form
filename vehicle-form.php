@@ -15,10 +15,11 @@ if ( ! defined( 'ABSPATH' ) ){
 }
 
 if ( ! class_exists( 'GF_Field' ) ){
-  exit( 'there has been an error' );
+  exit( 'This page requires Gravity forms. Please try again later' );
 }
 
 require_once plugin_dir_path( __FILE__ ) . 'inputs/vehicle.php';
+require_once plugin_dir_path( __FILE__ ) . 'inputs/plans.php';
 
 function vehicle_form_enqueue( $form, $is_ajax ){
   
@@ -28,6 +29,11 @@ function vehicle_form_enqueue( $form, $is_ajax ){
     wp_enqueue_script( 'vehicle-form-vehicle', plugins_url( '/assets/js/vehicle.js', __FILE__ ), array( 'jquery' ));
   }
 
+  $plans_fields = GFAPI::get_fields_by_type( $form, 'pricing-plan' );
+  if ( count( $plans_fields ) ){
+    wp_enqueue_style( 'vehicle-form-plan', plugins_url( '/assets/css/plans.css', __FILE__ ));
+    wp_enqueue_script( 'vehicle-form-plan', plugins_url( 'assets/js/plans.js', __FILE__ ));
+  }
 }
 
 add_action( 'gform_enqueue_scripts', 'vehicle_form_enqueue', 10, 2 );

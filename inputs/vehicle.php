@@ -44,7 +44,7 @@ class GF_Field_Vehicle extends GF_Field {
         $input_tag->appendChild( $input_tag_name );
         //value=""
         $input_tag_value = $input->createAttribute( 'value' );
-        $input_tag_value->value = '';
+        $input_tag_value->value = rgpost( 'input_' . esc_attr( $id ));
         $input_tag->appendChild( $input_tag_value );
       $input_container->appendChild( $input_tag );
 
@@ -65,6 +65,20 @@ class GF_Field_Vehicle extends GF_Field {
     }
   }
 
+  public function sanitize_entry_value( $value, $form_id ){
+    return sanitize_text_field( $value );
+  }
+
+  function get_form_editor_field_settings() {
+    return array(
+        'label_setting',
+        'label_placement_setting',
+        'rules_setting',
+        'visibility_setting',
+        'description_setting',
+        'css_class_setting',
+    );
+  }
 }
 
 GF_Fields::register( new GF_Field_Vehicle() );

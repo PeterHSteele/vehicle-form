@@ -1,0 +1,48 @@
+.gfield--type-pricing-plan{
+  --orange: rgb( 233, 161, 59 );
+  --blue: rgb( 43, 51, 65 );
+}
+
+.gfield--type-pricing-plan .plans-field-cards{
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+}
+
+.gfield--type-pricing-plan .plans-field-plan{
+  width: 350px;
+  margin: 10px;
+  padding: 24px 32px;
+  text-align: center;
+  color: var(--blue);
+  background: rgb( 247, 248, 249 );
+  border-radius: 5px;
+  font-weight: 700;
+  transition: .4s all ease;
+}
+
+.gfield--type-pricing-plan .plans-field-plan.selected{
+  color: #fff;
+  background: var(--orange);
+}
+
+.gfield--type-pricing-plan h2{
+  font-size: 16px;
+}
+
+.gfield--type-pricing-plan button{
+  display: block;
+  width: 100%;
+  padding: 16px 0;
+  font-weight: 900;
+  font-size: 18px;
+  color: #fff;
+  background: var(--orange);
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.gfield--type-pricing-plan .plans-field-plan.selected button{
+  display: none;
+}
