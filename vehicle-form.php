@@ -22,6 +22,11 @@ require_once plugin_dir_path( __FILE__ ) . 'inputs/vehicle.php';
 require_once plugin_dir_path( __FILE__ ) . 'inputs/plans.php';
 
 function vehicle_form_enqueue( $form, $is_ajax ){
+
+  if ( 3 == $form['id'] || 'sigtest' == $form['title'] ){//change
+    wp_enqueue_style( 'vehicle-form-general' , plugins_url( 'assets/css/general.css', __FILE__ ));
+    wp_enqueue_script( 'vehicle-form-general' , plugins_url( 'assets/js/form.js', __FILE__ ), array( 'jquery' ));
+  }
   
   $vehicle_fields = GFAPI::get_fields_by_type( $form, 'vehicle' );
   if ( count( $vehicle_fields )){

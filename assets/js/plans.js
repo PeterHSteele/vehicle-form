@@ -33,10 +33,10 @@ jQuery(document).ready(function(){
     setInitialValue(){
       const value = this.input.getAttribute( 'value' ),
       allowed = this.plans.map( plan => plan.pretty );
-      if ( !value || !allowed.indexOf( value )) return;
+      if ( !value || allowed.indexOf( value ) < 0) return;
       const selectedPlan = this.plans.find( plan => plan.pretty == value );
       const selected = Array.from( this.field.getElementsByClassName( 'plans-field-plan' )).find( el => el.dataset.duration == selectedPlan.data );
-      this.selected = selected;
+      this.selected = selected
       this.selected.classList.add( 'selected' );
     }
 

@@ -15,7 +15,7 @@ class GF_Field_Plans extends GF_Field {
         <h2><?php echo esc_html( $plandata['name'] ); ?></h2>
       </div>
       <div>
-        <p><?php echo esc_html( $plandata['price'] ); ?> €</p>
+        <p><?php echo esc_html( number_format( $plandata['price'], 2 )); ?> €</p>
       </div>
       <div>
         <p><?php echo esc_html( $plandata['info'] ); ?></p>
@@ -84,6 +84,29 @@ class GF_Field_Plans extends GF_Field {
     $markup = ob_get_contents();
     ob_end_clean();
     return $markup;
+  }
+
+  function get_form_editor_field_settings() {
+    return array(
+        'label_setting',
+        'label_placement_setting',
+        'rules_setting',
+        'visibility_setting',
+        'description_setting',
+        'css_class_setting',
+    );
+  }
+
+  public function validate( $value, $form ){
+    $allowed = [ 'One Day', 'Ten Days', 'Two Months', 'One Year', 'Single Ticket' ];
+    if ( !in_array( $value, $allowed )){
+      $this->failed_validation = true;
+      $this->validation_message = __( "Please Select an Allowed Value", 'vehicle-form' );
+    }
+  }
+
+  public function sanitize_entry_value( $value, $form_id ){
+    return sanitize_text_field( $value );
   }
 
 }

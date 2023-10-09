@@ -17,13 +17,16 @@
   color: var(--blue);
   background: rgb( 247, 248, 249 );
   border-radius: 5px;
-  font-weight: 700;
   transition: .4s all ease;
 }
 
 .gfield--type-pricing-plan .plans-field-plan.selected{
   color: #fff;
   background: var(--orange);
+}
+
+.gfield--type-pricing-plan .plans-field-plan.selected h2{
+  color: #fff;
 }
 
 .gfield--type-pricing-plan h2{

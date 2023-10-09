@@ -1,0 +1,41 @@
+.gform_wrapper{
+  --gray: rgb( 97, 102, 108 );
+  --gray150: rgb( 150, 150, 150 );
+  --light-gray: rgb( 151, 155, 167 );
+  --light-gray2: rgb( 221, 224, 229 );
+  --light-gray236: rgb( 236, 236, 236 );
+}
+
+/* General Inputs */
+.gform_wrapper.gravity-theme .gfield input[type=text],
+.gform_wrapper.gravity-theme .gfield select {
+  color: var(--light-gray);
+  width: 100%;
+  box-shadow: 1px 1px 2px var(--light-gray236);
+  line-height: 1.5em;
+  display: block;
+  border: 1px solid var(--light-gray2);
+  border-radius: 5px;
+}
+
+.gform_wrapper.gravity-theme .gfield .gfield_label{
+  color: var(--gray);
+}
+
+/* Date Field */
+.gfield--type-date input[type=text]{
+  
+}
+
+.gform_wrapper .vehicle-date-range{
+  background: rgb( 247, 248, 249 );
+  border-radius: 5px;
+}
+
+.gform_wrapper .vehicle-date-range div {
+  color: var(--gray);
+  text-align: center;
+  padding: 6px 0;
+}
+
+/* Validation */
