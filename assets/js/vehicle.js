@@ -11,10 +11,10 @@ jQuery(document).ready( function(){
     }
 
     handleClick(e){
-      if ( e.target.classList.contains( 'vehicle-field-button' )){
+      const clicked = e.target.closest( '.vehicle-field-button' );
+      if ( clicked ){
         e.preventDefault();
         this.buttons.forEach( button => button.classList.remove( 'selected' ))
-        const clicked = e.target;
         clicked.classList.add( 'selected' );
         if ( clicked.classList.contains( 'btn-motorcycle' ) ){
           this.input.setAttribute( 'value', 'motorcycle' );

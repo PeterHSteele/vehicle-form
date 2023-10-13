@@ -1,51 +1,128 @@
 .gfield--type-pricing-plan{
-  --orange: rgb( 233, 161, 59 );
-  --blue: rgb( 43, 51, 65 );
-}
-
-.gfield--type-pricing-plan .plans-field-cards{
-  display: flex;
-  justify-content: center;
-  flex-flow: row wrap;
+  font-size: 16px;
+  margin-bottom: 16px;
 }
 
 .gfield--type-pricing-plan .plans-field-plan{
-  width: 350px;
-  margin: 10px;
-  padding: 24px 32px;
-  text-align: center;
+  display: flex;
+  flex-flow: row nowrap;
+  margin: 16px 0;
+  padding: 32px;
   color: var(--blue);
-  background: rgb( 247, 248, 249 );
-  border-radius: 5px;
+  border-radius: 32px;
   transition: .4s all ease;
+  border: 1px solid #e8e8e9;
 }
 
 .gfield--type-pricing-plan .plans-field-plan.selected{
+  border-color: var(--vf-green-dark);
+}
+
+.gfield--type-pricing-plan .price-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--vf-lightgray);
+  min-width: 150px;
+  min-height: 150px;
+  border-radius: 25px;
+}
+
+.gfield--type-pricing-plan .plans-field-plan.selected .price-container{
+  background: #fff;
+}
+
+.gfield--type-pricing-plan .price-container p{
+  font-weight: 700;
+  color: var(--vf-darkgray);
+  font-size: 20px;
+  white-space: nowrap;
+}
+
+
+.gfield--type-pricing-plan .info-container{
+  display: flex;
+  flex-flow: column nowrap;
+  margin-left: 32px;
+}
+
+
+.gfield--type-pricing-plan .plans-field-plan.selected{
   color: #fff;
-  background: var(--orange);
+  background: var(--vf-green);
+}
+
+.gfield--type-pricing-plan h2{
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--vf-darkgray);
+  margin: 0 0 .67em 0;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
 }
 
 .gfield--type-pricing-plan .plans-field-plan.selected h2{
   color: #fff;
 }
 
-.gfield--type-pricing-plan h2{
-  font-size: 16px;
+.gfield--type-pricing-plan .info-container p{
+  flex: 1;
 }
 
 .gfield--type-pricing-plan button{
   display: block;
-  width: 100%;
-  padding: 16px 0;
+  padding: 12px 40px;
   font-weight: 900;
-  font-size: 18px;
+  font-size: 16px;
+  border-radius: 21px;
   color: #fff;
-  background: var(--orange);
+  background: var(--vf-green);
   border: 0;
-  border-radius: 5px;
   cursor: pointer;
+  white-space: nowrap;
+}
+
+.gfield--type-pricing-plan button:hover,
+.gfield--type-pricing-plan button:focus{
+  background: var(--vf-green-dark);
 }
 
 .gfield--type-pricing-plan .plans-field-plan.selected button{
-  display: none;
+  background: #fff;
+  color: var(--vf-darkgray);
+}
+
+@media all and ( max-width: 600px ){
+  .gfield--type-pricing-plan{
+    font-size: 14px;
+  }
+
+  .gfield--type-pricing-plan .plans-field-plan{
+    padding: 16px;
+    border-radius: 24px;
+  }
+
+  .gfield--type-pricing-plan .price-container{
+    min-width: auto;
+    min-height: auto;
+    padding: 0 16px;
+    border-radius: 16px;
+  }
+
+  .gfield--type-pricing-plan .price-container p{
+    font-size: 16px;
+  }
+
+  .gfield--type-pricing-plan .info-container{
+    margin-left: 16px;
+  }
+
+  .gfield--type-pricing-plan h2{
+    font-size: 18px;
+  }
+
+  .gfield--type-pricing-plan button{
+    margin-top: 12px;
+    padding: 12px 16px;
+  }
+  
 }

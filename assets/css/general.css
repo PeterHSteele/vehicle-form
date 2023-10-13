@@ -1,31 +1,134 @@
 .gform_wrapper{
-  --gray: rgb( 97, 102, 108 );
-  --gray150: rgb( 150, 150, 150 );
-  --light-gray: rgb( 151, 155, 167 );
-  --light-gray2: rgb( 221, 224, 229 );
-  --light-gray236: rgb( 236, 236, 236 );
+  --vf-lightgray: rgb(246, 247, 251 );
+  --vf-darkgray: rgb( 27, 32, 43 );
+  --vf-green:  rgb( 91, 200, 154 );
+  --vf-green-dark: rgb( 85, 183, 142 );
+
+  font-family: "Montserrat", Helvetica, sans-serif;
+}
+
+.gform_wrapper.gravity-theme .vehicle-rental-form .gform_fields{
+  grid-row-gap: 0px;
 }
 
 /* General Inputs */
-.gform_wrapper.gravity-theme .gfield input[type=text],
-.gform_wrapper.gravity-theme .gfield select {
+.gform_wrapper.gravity-theme input[type=text],
+.gform_wrapper.gravity-theme input[type=email],
+.gform_wrapper.gravity-theme select {
   color: var(--light-gray);
   width: 100%;
-  box-shadow: 1px 1px 2px var(--light-gray236);
-  line-height: 1.5em;
+  /*box-shadow: 1px 1px 2px rgb(236, 236, 236 );*/
+  font-size: 16px;
+  line-height: 2em;
+  height: auto;
   display: block;
-  border: 1px solid var(--light-gray2);
-  border-radius: 5px;
+  border: 1px solid rgb( 221, 224, 229 );
+  border-radius: 24px; /* (8 + 32 + 8) / 2 = 24 */
+  font-family: "Montserrat", sans-serif;
+  padding: 8px 16px;
 }
 
-.gform_wrapper.gravity-theme .gfield .gfield_label{
-  color: var(--gray);
+.gform_wrapper.gravity-theme .gfield_label{
+  font-size: 18px;
+  color: var(--vf-darkgray);
+}
+
+.vf-your-data-field{
+  padding: 32px 32px 0 32px;
+  border-top: 1px solid rgb( 221, 224, 229 );
+  border-left: 1px solid rgb( 221, 224, 229 );
+  border-right: 1px solid rgb( 221, 224, 229 );
+  border-radius: 32px 32px 0 0;
+}
+
+.vf-your-data-field h3{ 
+  font-weight: 700;
+  font-size: 24px;
+  margin-bottom: 0;
+}
+
+.gform_wrapper.gravity-theme .vf-name-field,
+.gform_wrapper.gravity-theme .vf-email-field{
+  padding: 0 32px;
+  border-left: 1px solid rgb( 221, 224, 229 );
+  border-right: 1px solid rgb( 221, 224, 229 );
+}
+
+.gform_wrapper.gravity-theme .vf-checkbox-field{
+  padding: 0 32px 32px;
+  border-left: 1px solid rgb( 221, 224, 229 );
+  border-right: 1px solid rgb( 221, 224, 229 );
+  border-bottom: 1px solid rgb( 221, 224, 229 );
+  border-radius: 0 0 32px 32px;
+  padding-top: 24px;
+}
+
+.gform_wrapper.gravity-theme .vf-checkbox-field input[type=checkbox] + label{
+  position: relative;
+  left: 50px;
+}
+
+.gform_wrapper.gravity-theme .vf-checkbox-field input[type=checkbox] + label:before{
+  position: absolute;
+  content: '';
+  right: calc( 100% + 10px );
+  top: 1px;
+  width: 40px;
+  height: 22px;
+  background: rgb( 146, 152, 160);
+  border-radius: 10px;
+}
+
+.gform_wrapper.gravity-theme .vf-checkbox-field input[type=checkbox] + label:after{
+  position: absolute;
+  content: '';
+  right: calc( 100% + 31px );
+  top: 4px;
+  background: #fff;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  transition: .4s all ease;
+}
+
+.gform_wrapper.gravity-theme .vf-checkbox-field .gchoice{
+  margin-bottom: 8px;
+}
+
+.gform_wrapper.gravity-theme .vf-checkbox-field input[type=checkbox]:checked + label:before{
+  background: var(--vf-green);
+}
+
+.gform_wrapper.gravity-theme .vf-checkbox-field input[type=checkbox]:checked + label:after{
+  right: calc( 100% + 14px );
+}
+
+.gform_wrapper.gravity-theme .vf-checkbox-field input[type=checkbox]{
+  clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: relative;
+	width: 1px;
+} 
+
+.gform_wrapper.gravity-theme .vf-name-field .ginput_complex label,
+.gform_wrapper.gravity-theme .vf-email-field .gfield_label{
+  color: var(--vf-darkgray);
+  font-size: 15px;
+  font-weight: 500;
+  display: block;
+  margin: 24px 0 8px;
+}
+
+.gform_wrapper.gravity-theme .vf-name-field input[type=text],
+.gform_wrapper.gravity-theme .vf-email-field input[type=email]{
+  font-size: 14px;
 }
 
 /* Date Field */
-.gfield--type-date input[type=text]{
-  
-}
 
 .gform_wrapper .vehicle-date-range{
   background: rgb( 247, 248, 249 );
