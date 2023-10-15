@@ -7,7 +7,7 @@ jQuery(document).ready(function(){
     constructor( plans ){
       this.plans = plans
       this.field = document.querySelector( '.gfield--type-pricing-plan' );
-      if ( !this.field || !this.plans) return;
+      if ( !this.field || !this.plans ) return;
       this.input = this.field.querySelector( 'input' );
       this.addListeners();
       this.setInitialValue()

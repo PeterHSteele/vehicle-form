@@ -33,7 +33,7 @@ class GF_Field_License_Plate extends GF_Field {
   public function date_input( $label, $id, $input_id, $value, $is_start ){
     $input_id_attr = "input_{$id}_{$input_id}";
     $css_class = $is_start ? 'start-date' : 'end-date';
-    $disabled_text = $is_start ? '' : 'disabled';
+    $disabled_text = $is_start ? '' : 'readonly';
     ?>
     <div class="date-input-container <?php echo $css_class; ?>" id='<?php echo "input_{$id}_{$input_id}_container"?>'>
       <label for="<?php echo $input_id_attr; ?>">
@@ -204,9 +204,69 @@ class GF_Field_License_Plate extends GF_Field {
     ["16.9"]=> string(4) "1312" }
   */
 
+  //string(10) "10/18/2023";
+
+  public function validate_date( $date, $is_start = true ){
+
+    if ( $is_start ){
+      $error_message = __( 'Invalid start date.', 'vehicle-form' );
+    } else {
+      $error_message = __( 'Invalid end date.', 'vehicle-form' );
+    }
+    
+    $error = array(
+      'is_valid' => false,
+      'message' => $error_message
+    );
+
+    if ( ! is_string( $date ) || empty( $date ) ){
+      return $error;
+    }
+  
+    $parts = explode('/', $date );
+    if ( count( $parts ) != 3 ){
+      return $error;
+    }
+  
+    $checked = checkdate( (int) $parts[0], (int) $parts[1], (int) $parts[2] );
+    if (false == $checked ){
+      return $error;
+    }
+  
+    $recombined = implode( '-', $parts );
+  
+    $test = DateTime::createFromFormat( 'm-d-Y', $recombined );
+    if ( !$test ){
+      return $error;
+    }
+  
+    $date_string = $test->format( 'm-d-Y' );
+    if ( !$date_string == $recombined ){
+      return $error;
+    }
+    
+    return array(
+      'is_valid' => true,
+      'message' => ''
+    );
+  }
+
   public function validate( $value, $form ){
     $id = $this->id;
     $countries = array_keys( $this->get_choices() );
+
+    $start_date = $this->validate_date( $value[$id.'.1'], true );
+    //$start_date = $this->validate_date( 'xinso', true );
+    if ( !$start_date['is_valid'] ){
+      $this->failed_validation = true;
+      $this->validation_message = $start_date['message'];
+    }
+
+    $end_date = $this->validate_date( $value[$id.'.2'], false );
+    if ( !$end_date['is_valid'] ){
+      $this->failed_validation = true;
+      $this->validation_message = $end_date['message'];
+    }
     
     /* Country is in list of allowed countries */
     $country_value = $value[$id.'.3'];

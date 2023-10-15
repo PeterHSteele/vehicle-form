@@ -91,7 +91,11 @@ class GF_Field_Plans extends GF_Field {
   }
 
   public function validate( $value, $form ){
-    $allowed = [ 'One Day', 'Ten Days', 'Two Months', 'One Year', 'Single Ticket' ];
+    //$allowed = [ '', 'Ten Days', 'Two Months', 'One Year', 'Single Ticket' ];
+    $allowed = array_map( function( $plan ){
+      return $plan['duration'];
+    } , VEHICLE_FORM_PLANS );
+    
     if ( !in_array( $value, $allowed )){
       $this->failed_validation = true;
       $this->validation_message = __( "Please Select an Allowed Value", 'vehicle-form' );

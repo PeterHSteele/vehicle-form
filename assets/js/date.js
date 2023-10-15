@@ -76,7 +76,8 @@ jQuery(document).ready( function(){
     }
 
     handleChoosePlan( event ){
-      this.dateInput.datepicker( 'option', 'disabled', false );
+      this.dateInput.datepicker('setDate', null);
+      this.endDateInput.setAttribute('value','');
       if ( 'annual' != event.detail.duration ) return;
       this.dateInput.datepicker( 'setDate', '12/01/2023' );
       this.endDateInput.setAttribute( 'value', '01/31/2025' );
