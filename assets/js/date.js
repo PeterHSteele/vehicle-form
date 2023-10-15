@@ -1,17 +1,22 @@
 jQuery(document).ready( function(){
 
   function oneDay ( date ) { 
-    date.setDate( date.getDate() + 1 )
+    date.setDate( date.getDate() + 1 );
     return date;
   }
 
   function tenDays( date ){
-    date.setDate( date.getDate() + 10 )
+    date.setDate( date.getDate() + 10 );
     return date;
   }
 
   function twoMonths( date ){
-    date.setMonth( date.getMonth() + 2 )
+    date.setMonth( date.getMonth() + 2 );
+    return date;
+  }
+
+  function oneYear( date ){
+    date.setYear( date.getFullYear() + 1);
     return date;
   }
   
@@ -23,19 +28,22 @@ jQuery(document).ready( function(){
       this.form = document.querySelector( '.vehicle-rental-form' );
       if ( !this.form ) return;
       this.dateInput = jQuery('.start-date input[type=text]');
-      this.endDateInput = Array.from( this.form.querySelector('.end-date').children).find( child => child.tagName == 'INPUT' );
+      this.endDateInput = Array.from( this.form.querySelector('.end-date').children ).find( child => child.tagName == 'INPUT' );
       //console.log( this.dateInput );
       this.addListeners();
       //this.addFilters();
       this.setMapPlansToTimes();
       this.initDatePicker()
+      jQuery('#ui-datepicker-div').addClass( 'gravity-theme' );
       this.planInput = this.form.querySelector( '.vehicle-plan input' )
     }
 
     setMapPlansToTimes(){
-      this.mapPlansToTimes["One Day"] = oneDay
-      this.mapPlansToTimes["Ten Days"] = tenDays
-      this.mapPlansToTimes["Two Months"] = twoMonths
+      //this.mapPlansToTimes["one-day"] = oneDay
+      this.mapPlansToTimes["ten-day"] = tenDays
+      this.mapPlansToTimes["two-month"] = twoMonths
+      this.mapPlansToTimes["single"] = oneYear
+      this.mapPlansToTimes['annual'] = () => null
     }
 
     handleStartDateChange( selected ){
@@ -67,7 +75,15 @@ jQuery(document).ready( function(){
       })*/
     }
 
-    initDatePicker( ){
+    handleChoosePlan( event ){
+      this.dateInput.datepicker( 'option', 'disabled', false );
+      if ( 'annual' != event.detail.duration ) return;
+      this.dateInput.datepicker( 'setDate', '12/01/2023' );
+      this.endDateInput.setAttribute( 'value', '01/31/2025' );
+      this.dateInput.datepicker( 'option', 'disabled', true );
+    }
+
+    initDatePicker(){
       this.dateInput.datepicker({
         onSelect: this.handleStartDateChange.bind(this),
         yearRange: '-100:+20',
@@ -77,15 +93,12 @@ jQuery(document).ready( function(){
         changeYear: true,
         suppressDatePicker: false,
         showOtherMonths: true,
-        selectOtherMonths: false,
-        beforeShow: function (input, inst) {
-            jQuery('#ui-datepicker-div').addClass( 'gravity-theme' );
-        }
+        selectOtherMonths: false
       });
     }
 
     addListeners(){
-      
+      this.form.addEventListener( 'choosePlan', this.handleChoosePlan.bind( this ));
     }
   }
 

@@ -3,12 +3,17 @@
   margin-bottom: 16px;
 }
 
-.gfield--type-pricing-plan .plans-field-plan{
+.gform_wrapper.gravity-theme .gfield--type-pricing-plan .gfield_label{
+  font-size: 18px;
+}
+
+.gfield--type-pricing-plan .plans-field-plan,
+.gfield--type-cart_and_terms .plans-field-plan {
   display: flex;
   flex-flow: row nowrap;
   margin: 16px 0;
   padding: 32px;
-  color: var(--blue);
+  color: var(--vf-darkgray);
   border-radius: 32px;
   transition: .4s all ease;
   border: 1px solid #e8e8e9;
@@ -18,7 +23,8 @@
   border-color: var(--vf-green-dark);
 }
 
-.gfield--type-pricing-plan .price-container{
+.gfield--type-pricing-plan .price-container,
+.gfield--type-cart_and_terms .price-container{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,7 +38,8 @@
   background: #fff;
 }
 
-.gfield--type-pricing-plan .price-container p{
+.gfield--type-pricing-plan .price-container p,
+.gfield--type-cart_and_terms .price-container p{
   font-weight: 700;
   color: var(--vf-darkgray);
   font-size: 20px;
@@ -40,19 +47,20 @@
 }
 
 
-.gfield--type-pricing-plan .info-container{
+.gfield--type-pricing-plan .info-container,
+.gfield--type-cart_and_terms .info-container{
   display: flex;
   flex-flow: column nowrap;
   margin-left: 32px;
 }
-
 
 .gfield--type-pricing-plan .plans-field-plan.selected{
   color: #fff;
   background: var(--vf-green);
 }
 
-.gfield--type-pricing-plan h2{
+.gfield--type-pricing-plan h2,
+.gfield--type-cart_and_terms h2{
   font-size: 22px;
   font-weight: 700;
   color: var(--vf-darkgray);
@@ -64,7 +72,8 @@
   color: #fff;
 }
 
-.gfield--type-pricing-plan .info-container p{
+.gfield--type-pricing-plan .info-container p,
+.gfield--type-cart_and_terms .info-container p{
   flex: 1;
 }
 

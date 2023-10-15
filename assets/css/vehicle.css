@@ -2,6 +2,10 @@
   margin-bottom: 24px;
 }
 
+.gform_wrapper.gravity-theme .gfield--type-vehicle .gfield_label{
+  font-size: 18px;
+}
+
 .gfield--type-vehicle .vehicle-buttons-wrapper {
   display: flex;
   justify-content: center;

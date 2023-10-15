@@ -26,13 +26,7 @@ class GF_Field_Plans extends GF_Field {
   }
 
   public function plan_data(){
-    return [
-      /*[
-        'name' => __( '1 Day Vignette Austria', 'vehicle-form' ),
-        'price' => 14.90,
-        'info' => __( 'Valid immediately or later if desired.', 'vehicle-form' ),
-        'duration' => 'one-day'
-      ],*/
+    /*return [
       [
         'name' => __( '10 Day Vignette Austria', 'vehicle-form' ),
         'price' => 12.50,
@@ -57,7 +51,8 @@ class GF_Field_Plans extends GF_Field {
         'info' => 'Valid for 1 year from the date of purchase/start of validity',
         'duration' => 'single'
       ]
-    ];
+    ];*/
+    return VEHICLE_FORM_PLANS;
   }
 
   public function get_field_input( $form, $value = '', $entry = '' ){

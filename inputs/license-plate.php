@@ -159,8 +159,6 @@ class GF_Field_License_Plate extends GF_Field {
     return $choices;
   }
 
-  
-
   function get_form_editor_field_settings() {
     return array(
         'label_setting',
@@ -242,6 +240,50 @@ class GF_Field_License_Plate extends GF_Field {
 
   public function sanitize_entry_value( $value, $form_id ){
     return sanitize_text_field( $value );
+  }
+
+  public function get_value_entry_detail( $value, $currency = '', $use_text = false, $format = 'html', $media = 'screen'){
+    //$start_date_te
+    $id = $this->id;
+    $start_date = esc_html( $value[$id.'.1'] );
+    $end_date = esc_html( $value[$id.'.2'] );
+    $country = esc_html( $value[$id.'.3']);
+    $license_plate = esc_html( $value[$id.'.4'] . $value[$id.'.5'] . $value[$id.'.6'] );
+    $license_plate_conf = esc_html( $value[$id.'.7'] . $value[$id.'.8'] . $value[$id.'.9'] );
+
+    $html = "
+      <table>
+        <thead>
+          <tr>
+            <th>Input</th>
+            <th>Response</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Valid From</td>
+            <td>$start_date</td>
+          </tr>
+          <tr>
+            <td>Valid Until</td>
+            <td>$end_date</td>
+          </tr>
+          <tr>
+            <td>Country</td>
+            <td>$country</td>
+          </tr>
+          <tr>
+            <td>License Plate</td>
+            <td>$license_plate</td>
+          </tr>
+          <tr>
+            <td>License Plate Confirmation</td>
+            <td>$license_plate_conf</td>
+          </tr>
+        </tbody>
+      </table>
+    ";
+    return $html;
   }
 }
 

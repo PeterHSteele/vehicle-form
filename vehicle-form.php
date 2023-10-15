@@ -53,9 +53,37 @@ define( 'VEHICLE_FORM_COUNTRIES', [
   ]
 ]);
 
+define( 'VEHICLE_FORM_PLANS', [
+  [
+    'name' => __( '10 Day Vignette Austria', 'vehicle-form' ),
+    'price' => 12.50,
+    'info' => __( 'Valid immediately or later if desired.', 'vehicle-form' ),
+    'duration' => 'ten-day'
+  ],
+  [
+    'name' => __( '2 Months Vignette Austria', 'vehicle-form'),
+    'price' => 23.60,
+    'info' => __( 'Valid immediately or later if desired.', 'vehicle-form' ),
+    'duration' => 'two-month'
+  ],
+  [
+    'name' => __( 'Annual Vignette Austria 2024', 'vehicle-form' ),
+    'price' => 49.90,
+    'info' => __( 'Valid from December 1st, 2023 - January 31st, 2025' ),
+    'duration' => 'annual'
+  ],
+  [
+    'name' => __( 'Route Toll', 'vehicle-form' ),
+    'price' => 11.50,
+    'info' => 'Valid for 1 year from the date of purchase/start of validity',
+    'duration' => 'single'
+  ]
+]);
+
 require_once plugin_dir_path( __FILE__ ) . 'inputs/vehicle.php';
 require_once plugin_dir_path( __FILE__ ) . 'inputs/plans.php';
 require_once plugin_dir_path( __FILE__ ) . 'inputs/license-plate.php';
+require_once plugin_dir_path( __FILE__ ) . 'inputs/cart-terms.php';
 
 function vehicle_form_enqueue( $form, $is_ajax ){
 
@@ -74,6 +102,7 @@ function vehicle_form_enqueue( $form, $is_ajax ){
   if ( count( $plans_fields ) ){
     wp_enqueue_style( 'vehicle-form-plan', plugins_url( '/assets/css/plans.css', __FILE__ ), array( 'vehicle-form-general' ));
     wp_enqueue_script( 'vehicle-form-plan', plugins_url( 'assets/js/plans.js', __FILE__ ));
+    wp_localize_script( 'vehicle-forms-cart-terms', 'vfplans', VEHICLE_FORM_PLANS );
   }
 
   $license_plate_fields = GFAPI::get_fields_by_type( $form, 'license_plate' );
@@ -83,34 +112,15 @@ function vehicle_form_enqueue( $form, $is_ajax ){
     wp_enqueue_style( 'gforms_datepicker_css', plugins_url( '/gravityforms/legacy/css/datepicker.min.css'));
     wp_enqueue_script( 'vehicle-form-date' , plugins_url( 'assets/js/date.js', __FILE__ ), array( 'jquery', 'jquery-ui-datepicker' ));
 
-    /*$countries = [
-      'austria' => [
-        'cssSuffix' => 'at',
-        'url' => VEHICLE_FORM_PLATES . 'generic-at.svg',
-        'placeholders' => array( 'W', '12345X', '', ),
-        'maxlengths' => [ '2', '6', '0']
-      ],
-      'bulgaria' => [
-        'cssSuffix' => 'bg',
-        'url' => VEHICLE_FORM_PLATES . 'generic-bg.svg',
-        'placeholders' => array( 'AB12CDYZ' ),
-        'maxlengths' => [ '8', '0', '0' ],
-      ],
-      'germany' => [
-        'cssSuffix' => 'ge',
-        'url' => VEHICLE_FORM_PLATES . 'bg-de.svg',
-        'placeholders' => array( 'B', 'AB', '1234', ),
-        'maxlengths' => [ '2', '2', '4' ],
-      ],
-      'romania' => [
-        'cssSuffix' => 'ro',
-        'url' => VEHICLE_FORM_PLATES . 'bg-ro.svg',
-        'placeholders' => array( 'CC', '12', 'ABC', ),
-        'maxlengths' => [ '2', '2', '3' ],
-      ]
-    ];*/
-
     wp_localize_script( 'vehicle-form-license', 'countries', VEHICLE_FORM_COUNTRIES );
+  }
+
+  $cart_terms_fields = GFAPI::get_fields_by_type( $form, 'cart_and_terms' );
+  if ( count( $cart_terms_fields )){
+    wp_enqueue_style( 'vehicle-forms-cart-terms', plugins_url( 'assets/css/cart-terms.css', __FILE__), array( 'vehicle-form-general' ));
+    wp_enqueue_script( 'vehicle-forms-cart-terms', plugins_url( 'assets/js/cart.js', __FILE__ ));
+    wp_localize_script( 'vehicle-forms-cart-terms', 'vfplans', VEHICLE_FORM_PLANS );
+    wp_localize_script( 'vehicle-forms-cart-terms', 'img', array( 'src' => VEHICLE_FORM_PLATES . 'close.svg' ));
   }
 }
 

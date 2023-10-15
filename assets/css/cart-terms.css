@@ -1,0 +1,123 @@
+.gfield--type-cart_and_terms{
+  padding: 32px;
+  border-radius: 32px;
+  margin-top: 32px;
+  font-size: 16px;
+  background: var(--vf-lightgray);
+}
+
+.gfield--type-cart_and_terms .vf-cart{
+  padding: 1em 1.5em;
+  background: #fff;
+  border: 1.5px solid  var(--vf-green);
+  border-radius: 1em;
+  margin: 0 0 1.5em 0;
+}
+
+.gfield--type-cart_and_terms .vf-cart h2{
+  font-size: 24px;
+  color: var(--vf-darkgray);
+}
+
+.gfield--type-cart_and_terms .vf-cart .chosen-plan{
+  display: flex;
+}
+
+.gfield--type-cart_and_terms .vf-cart .chosen-plan > div{
+  display: flex;
+  flex-direction: column;
+}
+
+.gfield--type-cart_and_terms .plans-field-plan {
+  font-size: .75em;
+  padding: 1em; 
+  border-radius: 1em;
+  position: relative;
+}
+
+.gfield--type-cart_and_terms .price-container{
+  background: var(--vf-green);
+  min-height: 90px;
+  min-width: 90px;
+}
+
+.gfield--type-cart_and_terms .price-container p{
+  color: #fff;
+}
+
+.gfield--type-cart_and_terms .info-container{
+  margin-left: 1.5em;
+}
+
+.gfield--type-cart_and_terms .info-container h2{
+  font-weight: 500;
+  font-size: 1.5em;
+  margin: 1.25em 0 .25em;
+}
+
+.gfield--type-cart_and_terms .remove-from-cart{
+  position: absolute;
+  right: 0px; 
+  top: -32px;
+  height: 42px;
+  width: 42px;
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #e8e8e9;
+  border-radius: 50%;
+  cursor: pointer;
+  text-align: center;
+}
+
+.gfield--type-cart_and_terms .remove-from-cart img{
+  width: 15;
+  height: 15px;
+  vertical-align: middle;
+}
+
+.vf-cart-total{
+  font-weight: 700;
+  font-size: 1.125em;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Checkboxes */
+
+.vh-terms-checkbox input{
+  clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: relative;
+	width: 1px;
+}
+
+.vh-terms-checkbox label{
+  font-weight: 500;
+  display: flex;
+}
+
+.vh-terms-checkbox label span{
+  display: block;
+}
+
+.vh-terms-checkbox label span span:not(:first-child){
+  margin: 1em 0 0;
+}
+
+.vh-terms-checkbox label .vh-custom-box{
+  height: 18px;
+  width: 18px;
+  background: #fff;
+  border-radius: 3px;
+  border: 1px solid var(--vf-darkgray);
+  margin: 3px 25px 0 0;
+}
+
+.vh-terms-checkbox input[type=checkbox]:checked + label .vh-custom-box{
+  background: var(--vf-green);
+  border: 1px solid var(--vf-green);
+}

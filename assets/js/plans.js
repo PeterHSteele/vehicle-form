@@ -1,18 +1,13 @@
 jQuery(document).ready(function(){
-  
+
   class PlansInput{
-    plans = [
-      { data: 'one-day', pretty: "One Day" },
-      { data: 'ten-day', pretty: 'Ten Days' },
-      { data: 'two-month', pretty: "Two Months" },
-      { data: 'annual', pretty: "One Year" },
-      { data: 'single', pretty: "Single Ticket" }
-    ]
+    
     selected = null;
 
-    constructor(){
+    constructor( plans ){
+      this.plans = plans
       this.field = document.querySelector( '.gfield--type-pricing-plan' );
-      if ( !this.field ) return;
+      if ( !this.field || !this.plans) return;
       this.input = this.field.querySelector( 'input' );
       this.addListeners();
       this.setInitialValue()
@@ -26,16 +21,25 @@ jQuery(document).ready(function(){
         const clicked = event.target;
         this.selected = clicked.closest( '.plans-field-plan' )
         this.selected.classList.add( 'selected' );
-        this.input.value = this.plans.find( plan => plan.data == this.selected.dataset.duration ).pretty
+        const duration = this.plans.find( plan => plan.duration == this.selected.dataset.duration ).duration
+        this.input.value = duration;
+        this.selected.dispatchEvent( 
+          new CustomEvent(
+            'choosePlan',
+            {
+              bubbles: true,
+              detail: { duration }
+            }
+        ));
       }
     }
 
     setInitialValue(){
       const value = this.input.getAttribute( 'value' ),
-      allowed = this.plans.map( plan => plan.pretty );
+      allowed = this.plans.map( plan => plan.duration );
       if ( !value || allowed.indexOf( value ) < 0) return;
-      const selectedPlan = this.plans.find( plan => plan.pretty == value );
-      const selected = Array.from( this.field.getElementsByClassName( 'plans-field-plan' )).find( el => el.dataset.duration == selectedPlan.data );
+      const selectedPlan = this.plans.find( plan => plan.duration == value );
+      const selected = Array.from( this.field.getElementsByClassName( 'plans-field-plan' )).find( el => el.dataset.duration == selectedPlan.duration );
       this.selected = selected
       this.selected.classList.add( 'selected' );
     }
@@ -45,5 +49,5 @@ jQuery(document).ready(function(){
     }
   }
 
-  const plans = new PlansInput();
+  const plans = new PlansInput( vfplans );
 });
