@@ -290,3 +290,22 @@
 .gfield--type-license_plate .layout-hu .lp-input-9{
   display: none;
 }
+
+/* Ireland */
+.gfield--type-license_plate .layout-ie .lp-input-4,
+.gfield--type-license_plate .layout-ie .lp-input-7{
+  margin-left: 10%;
+  flex: 0 0 20%;
+}
+
+.gfield--type-license_plate .layout-ie .lp-input-5,
+.gfield--type-license_plate .layout-ie .lp-input-8{
+  margin-left: 1%;
+  flex: 0 0 19%;
+}
+
+.gfield--type-license_plate .layout-ie .lp-input-6,
+.gfield--type-license_plate .layout-ie .lp-input-9{
+  margin-left: 1%;
+  flex: 0 0 45%;
+}

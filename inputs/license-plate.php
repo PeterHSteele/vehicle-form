@@ -17,6 +17,7 @@ class GF_Field_License_Plate extends GF_Field {
     'france' => [ '/^[A-Za-z0-9]{2,3}$/', '/^[A-Za-z0-9]{3}$/', '/^[A-Za-z0-9]{2}$/' ],
     'greece' => [ '/^[A-Za-z]{3}$/', '/^[0-9]{4}$/' ],
     'hungary' => [ '/^[A-Za-z0-9]{2,4}$/', '/^[A-Za-z0-9]{2,4}$/' ],
+    'ireland' => [ '/^[0-9]{2,3}$/', '/^[A-Za-z0-9]{1,2}$/', '/^[0-9]{1,6}$/'],
   ];
   
   public function get_form_editor_field_title(){
@@ -171,6 +172,7 @@ class GF_Field_License_Plate extends GF_Field {
       'france' => esc_html__( 'France', 'vehicle-form' ),
       'greece' => esc_html__( 'Greece', 'vehicle-form' ),
       'hungary' => esc_html__( 'Hungary', 'vehicle-form' ),
+      'ireland' => esc_html__( 'Ireland', 'vehicle-form' ),
     ];
     return $choices;
   }

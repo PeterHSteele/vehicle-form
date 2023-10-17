@@ -87,6 +87,12 @@ define( 'VEHICLE_FORM_COUNTRIES', [
     'placeholders' => [ 'ABC', '123', '' ],
     'maxlengths' => [ '4', '4', '0' ],
   ],
+  'ireland' => [
+    'cssSuffix' => 'ie',
+    'url' => VEHICLE_FORM_PLATES . 'generic-ie.svg',
+    'placeholders' => ['123','AB', '123456' ],
+    'maxlengths' => [ '3', '2', '6' ],
+  ],
   'germany' => [
     'cssSuffix' => 'ge',
     'url' => VEHICLE_FORM_PLATES . 'bg-de.svg',
