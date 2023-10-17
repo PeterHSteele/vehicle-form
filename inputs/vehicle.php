@@ -17,9 +17,9 @@ class GF_Field_Vehicle extends GF_Field {
               <?php esc_html_e( 'Motorcycle', 'vehicle-input' ); ?>
             </div>
           </button>
-          <button type="button" class='vehicle-field-button btn-motorcycle'>
+          <button type="button" class='vehicle-field-button btn-automobile'>
             <div class='icon-wrap'>
-              <?php include VEHICLE_FORM_ASSETS . 'inline-svg/motorcycle.php' ?>
+              <?php include VEHICLE_FORM_ASSETS . 'inline-svg/automobile.php' ?>
             </div>
             <div class="description">
               <?php esc_html_e( 'Automobile', 'vehicle-input' ); ?>

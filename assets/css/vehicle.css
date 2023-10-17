@@ -32,7 +32,7 @@
   color: var(--vf-darkgray);
   font-weight: 700;
 }
-*.gfield--type-vehicle .vehicle-field-button svg{
+.gfield--type-vehicle .vehicle-field-button svg{
   max-width: 100px;
 }
 
@@ -60,5 +60,10 @@
 
 .gfield--type-vehicle .vehicle-field-button:hover circle.cls-1,
 .gfield--type-vehicle .vehicle-field-button.selected circle.cls-1{
+  fill: #fff;
+}
+
+.gfield--type-vehicle .vehicle-field-button.btn-automobile:hover .cls-1,
+.gfield--type-vehicle .vehicle-field-button.btn-automobile.selected .cls-1{
   fill: #fff;
 }

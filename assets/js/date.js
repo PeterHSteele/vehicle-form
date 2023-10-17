@@ -64,7 +64,7 @@ jQuery(document).ready( function(){
       endDay = endDate.getDate(),
       endYear = endDate.getFullYear(),
       endDateText = [ endMonth, endDay, endYear ].join( '/' );
-      this.endDateInput.setAttribute( 'value', endDateText)
+      this.endDateInput.setAttribute( 'value', endDateText )
       
     }
 
@@ -76,15 +76,31 @@ jQuery(document).ready( function(){
     }
 
     handleChoosePlan( event ){
-      this.dateInput.datepicker('setDate', null);
+      let duration = event?.detail?.duration;
+
+      //make sure datepicker is unlocked and input is writeable
+      this.dateInput.attr( 'readonly', false );
+      this.initDatePicker();
+      console.log( `setting datepicker to ${duration == 'annual' ? '12/01/2023' : null}`);
+      this.dateInput.datepicker('setDate', duration == 'annual' ? '12/01/2023' : null);
       this.endDateInput.setAttribute('value','');
-      if ( 'annual' != event.detail.duration ) return;
-      this.dateInput.datepicker( 'setDate', '12/01/2023' );
+      
+      if ( 'annual' != event?.detail?.duration ) return;
+
       this.endDateInput.setAttribute( 'value', '01/31/2025' );
-      this.dateInput.datepicker( 'option', 'disabled', true );
+
+      //lock datepicker
+      console.log('suppressing');
+      this.dateInput.attr( 'readonly', true );
+      this.dateInput.datepicker( "destroy" );
+    }
+
+    handleEmptyCart( event ){
+      this.handleChoosePlan( event );
     }
 
     initDatePicker(){
+      const now = new Date();
       this.dateInput.datepicker({
         onSelect: this.handleStartDateChange.bind(this),
         yearRange: '-100:+20',
@@ -94,12 +110,14 @@ jQuery(document).ready( function(){
         changeYear: true,
         suppressDatePicker: false,
         showOtherMonths: true,
-        selectOtherMonths: false
+        selectOtherMonths: false,
+        minDate: now,
       });
     }
 
     addListeners(){
       this.form.addEventListener( 'choosePlan', this.handleChoosePlan.bind( this ));
+      this.form.addEventListener( 'emptyCart', this.handleEmptyCart.bind( this ))
     }
   }
 

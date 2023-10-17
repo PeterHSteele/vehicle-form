@@ -39,6 +39,54 @@ define( 'VEHICLE_FORM_COUNTRIES', [
     'placeholders' => [ 'AB1234YZ', '', '' ],
     'maxlengths' => [ '9', '0', '0' ],
   ],
+  'cyprus' => [
+    'cssSuffix' => 'cy',
+    'url' => VEHICLE_FORM_PLATES . 'generic-cy.svg',
+    'placeholders' => ['ABC', '123', '' ],
+    'maxlengths' => ['3', '3', '0' ],
+  ],
+  'czechrepublic' => [
+    'cssSuffix' => 'cz',
+    'url' => VEHICLE_FORM_PLATES . 'bg-cz.svg',
+    'placeholders' => [ '1A2', '3456', '0' ],
+    'maxlengths' => [ '3', '4', '0' ]
+  ],
+  'denmark' => [
+    'cssSuffix' => 'dk',
+    'url' => VEHICLE_FORM_PLATES . 'generic-dk.svg',
+    'placeholders' => [ 'AB', '12', '123' ],
+    'maxlengths' => ['2', '2', '3' ],
+  ],
+  'estonia' => [
+    'cssSuffix' => 'ee',
+    'url' => VEHICLE_FORM_PLATES . 'generic-ee.svg',
+    'placeholders' => ['123ABC', '', ''],
+    'maxlengths' => [ '10', '0', '0' ],
+  ],
+  'finland' => [
+    'cssSuffix' => 'fi',
+    'url' => VEHICLE_FORM_PLATES . 'generic-fi.svg',
+    'placeholders' => [ 'ABC', '123', '' ],
+    'maxlengths' => [ '3', '3', '0' ],
+  ],
+  'france' => [
+    'cssSuffix' => 'fr',
+    'url' => VEHICLE_FORM_PLATES . 'generic-fr.svg',
+    'placeholders' => [ 'AB', '123', 'YZ' ],
+    'maxlengths' => [ '3', '3', '2' ]
+  ],
+  'greece' => [
+    'cssSuffix' => 'gr',
+    'url' => VEHICLE_FORM_PLATES . 'generic-gr.svg',
+    'placeholders' => ['ABC', '1234', '' ],
+    'maxlengths' => [ '3', '4', '0' ],
+  ],
+  'hungary' => [
+    'cssSuffix' => 'hu',
+    'url' => VEHICLE_FORM_PLATES . 'bg-hu.svg',
+    'placeholders' => [ 'ABC', '123', '' ],
+    'maxlengths' => [ '4', '4', '0' ],
+  ],
   'germany' => [
     'cssSuffix' => 'ge',
     'url' => VEHICLE_FORM_PLATES . 'bg-de.svg',
@@ -50,7 +98,8 @@ define( 'VEHICLE_FORM_COUNTRIES', [
     'url' => VEHICLE_FORM_PLATES . 'bg-ro.svg',
     'placeholders' => array( 'CC', '12', 'ABC', ),
     'maxlengths' => [ '2', '2', '3' ],
-  ]
+  ],
+
 ]);
 
 define( 'VEHICLE_FORM_PLANS', [

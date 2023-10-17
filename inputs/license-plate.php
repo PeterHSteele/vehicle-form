@@ -9,6 +9,14 @@ class GF_Field_License_Plate extends GF_Field {
     'germany' => [ '/^[A-Za-z]{1,3}$/', '/^[a-zA-Z]{1,2}$/', '/^[0-9]{1,4}$/' ],
     'romania' => [ '/^[A-Za-z]{1,2}$/', '/^[0-9]{1,2}$/', '/^[A-Za-z]{1,3}$/' ],
     'croatia' => [ '/^[A-Za-z0-9-]{7,9}$/'],
+    'cyprus' => [ '/^[A-Z]{3}$/', '/^[0-9]{3}$/' ],
+    'czechrepublic' => [ '/^[A-Za-z0-9]{3}$/', '/^[A-Za-z0-9]{4}$/' ],
+    'denmark' => [ '/^[A-Za-z]{2}$/', '/^[0-9]{2}$/', '/^[0-9]{3}$/' ],
+    'estonia' => [ '/^[A-Za-z0-9]{4,10}$/' ],
+    'finland' => [ '/^[A-Za-z]{1,3}$/', '/^[0-9]{1,3}/' ],
+    'france' => [ '/^[A-Za-z0-9]{2,3}$/', '/^[A-Za-z0-9]{3}$/', '/^[A-Za-z0-9]{2}$/' ],
+    'greece' => [ '/^[A-Za-z]{3}$/', '/^[0-9]{4}$/' ],
+    'hungary' => [ '/^[A-Za-z0-9]{2,4}$/', '/^[A-Za-z0-9]{2,4}$/' ],
   ];
   
   public function get_form_editor_field_title(){
@@ -62,8 +70,8 @@ class GF_Field_License_Plate extends GF_Field {
     $maxlengths = $country['maxlengths'];
     $maxlength = $maxlengths[ $attr_index ];
         
-    $disabled = in_array( $input, array(6, 9) ) ? 'disabled' : '';//for default country, Austria
-    $disabled = '';//change
+    //$disabled = in_array( $input, array(6, 9) ) ? 'disabled' : '';//for default country, Austria
+    $disabled = $maxlengths[$attr_index] == '0' ? 'disabled' : '';//change
 
     ?>
       <span id="input_<?php echo $field_id; ?>_1_container" class="lp-input <?php echo "lp-input-$input";?>">
@@ -154,7 +162,15 @@ class GF_Field_License_Plate extends GF_Field {
       'bulgaria' => esc_html__('Bulgaria', 'vehicle-form'),
       'croatia' => esc_html__( 'Croatia', 'vehicle-form' ),
       'germany' => esc_html__('Germany', 'vehicle-form'),
-      'romania' => esc_html__('Romania', 'vehicle-form')
+      'romania' => esc_html__('Romania', 'vehicle-form'),
+      'cyprus' => esc_html__( 'Cyprus', 'vehicle-form' ),
+      'czechrepublic' => esc_html__( 'Czech Republic', 'vehicle-form' ),
+      'denmark' => esc_html__( 'Denmark', 'vehicle-form' ),
+      'estonia' => esc_html__( 'Estonia', 'vehicle-form' ),
+      'finland' => esc_html__( 'Finland', 'vehicle-form' ),
+      'france' => esc_html__( 'France', 'vehicle-form' ),
+      'greece' => esc_html__( 'Greece', 'vehicle-form' ),
+      'hungary' => esc_html__( 'Hungary', 'vehicle-form' ),
     ];
     return $choices;
   }
@@ -206,7 +222,7 @@ class GF_Field_License_Plate extends GF_Field {
 
   //string(10) "10/18/2023";
 
-  public function validate_date( $date, $is_start = true ){
+  public function validate_date( $date, $is_start = true ){ 
 
     if ( $is_start ){
       $error_message = __( 'Invalid start date.', 'vehicle-form' );
@@ -227,7 +243,7 @@ class GF_Field_License_Plate extends GF_Field {
     if ( count( $parts ) != 3 ){
       return $error;
     }
-  
+    
     $checked = checkdate( (int) $parts[0], (int) $parts[1], (int) $parts[2] );
     if (false == $checked ){
       return $error;
@@ -254,7 +270,7 @@ class GF_Field_License_Plate extends GF_Field {
   public function validate( $value, $form ){
     $id = $this->id;
     $countries = array_keys( $this->get_choices() );
-
+    
     $start_date = $this->validate_date( $value[$id.'.1'], true );
     //$start_date = $this->validate_date( 'xinso', true );
     if ( !$start_date['is_valid'] ){
@@ -308,8 +324,21 @@ class GF_Field_License_Plate extends GF_Field {
     $start_date = esc_html( $value[$id.'.1'] );
     $end_date = esc_html( $value[$id.'.2'] );
     $country = esc_html( $value[$id.'.3']);
-    $license_plate = esc_html( $value[$id.'.4'] . $value[$id.'.5'] . $value[$id.'.6'] );
-    $license_plate_conf = esc_html( $value[$id.'.7'] . $value[$id.'.8'] . $value[$id.'.9'] );
+
+    switch ( $country ){
+      case 'finland':
+      case 'greece':
+        $license_plate = esc_html( $value[$id.'.4'] . '-' . $value[$id.'.5']); 
+        $license_plate_conf = esc_html( $value[$id.'.7'] . '-' . $value[$id.'.8'] );
+        break;
+      case 'france': 
+        $license_plate = esc_html( implode( '-', [ $value[$id.'.4'], $value[$id.'.5'], $value[$id.'.6'] ] ) );
+        $license_plate_conf = esc_html( implode( '-', [ $value[$id.'.7'], $value[$id.'.8'], $value[$id.'.9'] ] ) );
+        break;
+      default: 
+        $license_plate = esc_html( $value[$id.'.4'] . $value[$id.'.5'] . $value[$id.'.6'] );
+        $license_plate_conf = esc_html( $value[$id.'.7'] . $value[$id.'.8'] . $value[$id.'.9'] );
+    }
 
     $html = "
       <table>

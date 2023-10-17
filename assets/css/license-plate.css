@@ -51,10 +51,18 @@
 .gform_wrapper .gfield--type-license_plate .license-plate-fields{
   display: flex;
   gap: 16px;
+  flex-direction: row;
+}
+
+@media all and ( max-width: 769px ){
+  .gform_wrapper .gfield--type-license_plate .license-plate-fields{
+    flex-direction: column;
+  }
 }
 
 .gform_wrapper .gfield--type-license_plate .license-plate-field{
   margin-bottom: 24px;
+  flex: 1;
 }
 
 .gfield--type-license_plate .license-plate-inputs{
@@ -142,23 +150,35 @@
 /* Romania */ 
 
 .gfield--type-license_plate .layout-ro .lp-input-5,
-.gfield--type-license_plate .layout-ro .lp-input-8{
+.gfield--type-license_plate .layout-ro .lp-input-8,
+.gfield--type-license_plate .layout-dk .lp-input-5,
+.gfield--type-license_plate .layout-dk .lp-input-8{
   margin-left: 5%;
 }
 
 .gfield--type-license_plate .layout-ro .lp-input-5,
 .gfield--type-license_plate .layout-ro .lp-input-8,
+.gfield--type-license_plate .layout-dk .lp-input-5,
+.gfield--type-license_plate .layout-dk .lp-input-8{
+  margin-left: 1%;
+  flex: 0 0 20%;
+}
+
 .gfield--type-license_plate .layout-ro .lp-input-6,
-.gfield--type-license_plate .layout-ro .lp-input-9{
+.gfield--type-license_plate .layout-ro .lp-input-9,
+.gfield--type-license_plate .layout-dk .lp-input-6,
+.gfield--type-license_plate .layout-dk .lp-input-9{
   margin-left: 1%;
   flex: 0 0 29%;
 }
 
-/* Bulgaria, Croatia */
+/* Bulgaria, Croatia, Estonia */
 .gfield--type-license_plate .layout-bg .lp-input-4,
 .gfield--type-license_plate .layout-bg .lp-input-7,
 .gfield--type-license_plate .layout-cr .lp-input-4,
-.gfield--type-license_plate .layout-cr .lp-input-7{
+.gfield--type-license_plate .layout-cr .lp-input-7,
+.gfield--type-license_plate .layout-ee .lp-input-4,
+.gfield--type-license_plate .layout-ee .lp-input-7{
   margin: 0 0 0 15%;
   flex: 0 0 50%;
 }
@@ -170,6 +190,103 @@
 .gfield--type-license_plate .layout-cr .lp-input-5,
 .gfield--type-license_plate .layout-cr .lp-input-8,
 .gfield--type-license_plate .layout-cr .lp-input-6,
-.gfield--type-license_plate .layout-cr .lp-input-9{
+.gfield--type-license_plate .layout-cr .lp-input-9,
+.gfield--type-license_plate .layout-ee .lp-input-5,
+.gfield--type-license_plate .layout-ee .lp-input-8,
+.gfield--type-license_plate .layout-ee .lp-input-6,
+.gfield--type-license_plate .layout-ee .lp-input-9{
+  display: none;
+}
+
+/* Cyprus, Finland */
+
+.gfield--type-license_plate .layout-cy .lp-input-4,
+.gfield--type-license_plate .layout-cy .lp-input-7,
+.gfield--type-license_plate .layout-fi .lp-input-4,
+.gfield--type-license_plate .layout-fi .lp-input-7{
+  margin: 0 0 0 15%;
+  flex: 0 0 30%;
+}
+
+.gfield--type-license_plate .layout-cy .lp-input-5,
+.gfield--type-license_plate .layout-cy .lp-input-8,
+.gfield--type-license_plate .layout-fi .lp-input-5,
+.gfield--type-license_plate .layout-fi .lp-input-8{
+  margin: 0 0 0 15%;
+  flex: 0 0 30%;
+}
+
+.gfield--type-license_plate .layout-cy .lp-input-6,
+.gfield--type-license_plate .layout-cy .lp-input-9,
+.gfield--type-license_plate .layout-fi .lp-input-6,
+.gfield--type-license_plate .layout-fi .lp-input-9{
+  display: none;
+}
+
+/* Czech Republic */
+.gfield--type-license_plate .layout-cz .lp-input-4,
+.gfield--type-license_plate .layout-cz .lp-input-7{
+  margin: 0 0 0 10%;
+  flex: 0 0 33%;
+}
+
+.gfield--type-license_plate .layout-cz .lp-input-5,
+.gfield--type-license_plate .layout-cz .lp-input-8{
+  margin: 0 0 0 15%;
+  flex: 0 0 45%;
+}
+
+.gfield--type-license_plate .layout-cz .lp-input-6,
+.gfield--type-license_plate .layout-cz .lp-input-9{
+  display: none;
+}
+
+/* France */
+.gfield--type-license_plate .layout-fr .lp-input-5,
+.gfield--type-license_plate .layout-fr .lp-input-8{
+  margin-left: 5%;
+  flex: 0 0 25%;
+}
+
+.gfield--type-license_plate .layout-fr .lp-input-6,
+.gfield--type-license_plate .layout-fr .lp-input-9{
+  margin-left: 5%;
+  flex: 0 0 20%;
+}
+
+/* Greece */
+
+.gfield--type-license_plate .layout-gr .lp-input-4,
+.gfield--type-license_plate .layout-gr .lp-input-7{
+  flex: 0 0 25%;
+}
+
+.gfield--type-license_plate .layout-gr .lp-input-5,
+.gfield--type-license_plate .layout-gr .lp-input-8{
+  margin-left: 5%;
+  flex: 0 0 33.33%;
+}
+
+.gfield--type-license_plate .layout-gr .lp-input-6,
+.gfield--type-license_plate .layout-gr .lp-input-9{
+  display: none;
+}
+
+/* Hungary */
+
+.gfield--type-license_plate .layout-hu .lp-input-4,
+.gfield--type-license_plate .layout-hu .lp-input-7{
+  margin-left: 10%;
+  flex: 0 0 40%;
+}
+
+.gfield--type-license_plate .layout-hu .lp-input-5,
+.gfield--type-license_plate .layout-hu .lp-input-8{
+  margin-left: 14%;
+  flex: 0 0 40%;
+}
+
+.gfield--type-license_plate .layout-hu .lp-input-6,
+.gfield--type-license_plate .layout-hu .lp-input-9{
   display: none;
 }

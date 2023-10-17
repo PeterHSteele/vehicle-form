@@ -60,7 +60,12 @@ jQuery(document).ready( function(){
       }
       element.setAttribute( 'value', '' );
       element.setAttribute( 'placeholder', placeholder );
-      element.setAttribute( 'maxlength', maxlength ); 
+      element.setAttribute( 'maxlength', maxlength );
+      if ( element.hasAttribute( 'disabled' ) && maxlength !== "0" ){
+        element.disabled = false;
+      } else if ( !element.hasAttribute('disabled') && maxlength == "0" ){
+        element.disabled = true;
+      }
     }
 
     addListeners(){

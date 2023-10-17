@@ -105,8 +105,14 @@ class GF_Field_Cart_And_Terms extends GF_Field {
   } */
 
   public function validate( $value, $form ){
+
+    if ( empty( $value[$this->id.'.1'] ) ){
+      $this->failed_validation = true;
+      $this->validation_message = esc_html__( 'Please agree to the terms and conditions.', 'vehicle-form' );
+      return;
+    }
     
-    if ( !empty( $value[$this->id.'.1'] ) && $value[$this->id.'.1'] != $this->checkbox_one_val ){
+    if ( $value[$this->id.'.1'] != $this->checkbox_one_val ){
       $this->failed_validation = true;
       $this->validation_message = esc_html__( 'Error validating terms checkbox.', 'vehicle-form' );
     }
@@ -126,9 +132,11 @@ class GF_Field_Cart_And_Terms extends GF_Field {
       echo esc_html($value);
     }
 
-    $html = '<ul>';
+    $html = '<ul class="bulleted">';
     foreach( $value as $field ){
-      $html .= '<li style="list-style: disc;">' . $field . '</li>';
+      if ( $field ){
+        $html .= '<li>' . $field . '</li>';
+      }
     }
     $html .= '</ul>';
     return $html;
@@ -140,8 +148,7 @@ class GF_Field_Cart_And_Terms extends GF_Field {
     field.label = '%s';
     field.inputs = [
       new Input(field.id + '.1', ''), 
-      new Input(field.id + '.2', ''), 
-      new Input(field.id + '.3', ''),
+      new Input(field.id + '.2', ''),
     ];
     }", $this->type, $this->get_form_editor_field_title() ) . PHP_EOL;
 

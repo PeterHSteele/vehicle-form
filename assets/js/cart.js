@@ -107,6 +107,12 @@ document.addEventListener( 'DOMContentLoaded', function(){
 
     handleClick( event ){
       if ( event.target.closest( '.remove-from-cart' )){
+        this.chosenPlan.dispatchEvent(
+          new CustomEvent(
+            'emptyCart',
+            { bubbles: true }
+          )
+        )
         this.chosenPlan.children.item(0).remove();
       }
     }

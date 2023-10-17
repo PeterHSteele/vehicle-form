@@ -70,7 +70,7 @@
 }
 
 .gfield--type-cart_and_terms .remove-from-cart img{
-  width: 15;
+  width: 15px;
   height: 15px;
   vertical-align: middle;
 }
@@ -97,6 +97,8 @@
 
 .vh-terms-checkbox label{
   font-weight: 500;
+  color: var(--vf-darkgray);
+	line-height: 1.6;
   display: flex;
 }
 

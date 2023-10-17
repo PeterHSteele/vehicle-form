@@ -11,6 +11,12 @@
   grid-row-gap: 0px;
 }
 
+.vehicle-rental-form{
+	width: 100%;
+	margin: 0 auto;
+	max-width: 750px;
+}
+
 /* General Inputs */
 .gform_wrapper.gravity-theme input[type=text],
 .gform_wrapper.gravity-theme input[type=email],
@@ -22,10 +28,15 @@
   line-height: 2em;
   height: auto;
   display: block;
+  background: #fff;
   border: 1px solid rgb( 221, 224, 229 );
   border-radius: 24px; /* (8 + 32 + 8) / 2 = 24 */
   font-family: "Montserrat", sans-serif;
   padding: 8px 16px;
+}
+
+.gform_wrapper.gravity-theme input[readonly]{
+  background: var(--vf-lightgray);
 }
 
 .gform_wrapper.gravity-theme .gfield_label{
@@ -142,3 +153,25 @@
 }
 
 /* Validation */
+
+.vehicle-rental-form input[type=submit]{
+  background: var(--vf-green);
+  color: #fff;
+  padding: 8px 18px;
+  border: 1px solid transparent;
+  font-size: 1.125em;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: .3s all ease;
+  box-shadow: 3px 3px 5px rgba(0,0,0,.2);
+}
+
+.vehicle-rental-form input[type=submit]:hover,
+.vehicle-rental-form input[type=submit]:focus{
+  background: var(--vf-green-dark);
+  color: #fff;
+  border: 1px solid var(--vf-green);
+  background: #fff;
+  color: var(--vf-green-dark);
+  box-shadow: none;
+}
