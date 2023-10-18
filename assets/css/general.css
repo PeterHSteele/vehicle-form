@@ -23,14 +23,13 @@
 .gform_wrapper.gravity-theme select {
   color: var(--light-gray);
   width: 100%;
-  /*box-shadow: 1px 1px 2px rgb(236, 236, 236 );*/
   font-size: 16px;
   line-height: 2em;
   height: auto;
   display: block;
   background: #fff;
   border: 1px solid rgb( 221, 224, 229 );
-  border-radius: 24px; /* (8 + 32 + 8) / 2 = 24 */
+  border-radius: 24px;
   font-family: "Montserrat", helvetica, sans-serif;
   padding: 8px 16px;
 }
