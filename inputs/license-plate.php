@@ -4,7 +4,8 @@ class GF_Field_License_Plate extends GF_Field {
 
   public $type = 'license_plate';
   private $patterns = [
-    'austria' => ['/[a-zA-Z]{1,2}/', '/^[a-zA-Z0-9]{3,6}$/'],
+    'austria' => ['/^[a-zA-Z]{1,2}$/', '/^[a-zA-Z0-9]{3,6}$/'],
+    'belgium' => [ '/^[A-Za-z0-9]{5,10}$/' ],
     'bulgaria' => ['/^[A-Za-z0-9]{7,8}$/'],
     'germany' => [ '/^[A-Za-z]{1,3}$/', '/^[a-zA-Z]{1,2}$/', '/^[0-9]{1,4}$/' ],
     'romania' => [ '/^[A-Za-z]{1,2}$/', '/^[0-9]{1,2}$/', '/^[A-Za-z]{1,3}$/' ],
@@ -18,6 +19,18 @@ class GF_Field_License_Plate extends GF_Field {
     'greece' => [ '/^[A-Za-z]{3}$/', '/^[0-9]{4}$/' ],
     'hungary' => [ '/^[A-Za-z0-9]{2,4}$/', '/^[A-Za-z0-9]{2,4}$/' ],
     'ireland' => [ '/^[0-9]{2,3}$/', '/^[A-Za-z0-9]{1,2}$/', '/^[0-9]{1,6}$/'],
+    'italy' => [ '/^[A-Za-z]{1,2}$/', '/^[0-9]{3}$/', '/^[A-Za-z]{1,2}$/' ],
+    'lithuania' => [ '/^[A-Za-z]{3}$/', '/^[0-9]{3}$/' ],
+    'luxembourg' => [ '/^[A-Za-z0-9]{4,10}$/' ],
+    'malta' => [ '/^[A-Za-z]{2}[A-Za-z0-9]{1}$/', '/^[0-9]{3}$/' ],
+    'netherlands' => [ '/^[A-Za-z0-9]{1,3}$/', '/^[A-Za-z0-9]{1,3}$/', '/^[A-Za-z0-9]{1,3}$/' ],
+    'poland' => [ '/^[A-Za-z0-9]{1,3}$/', '/^[A-Za-z0-9]{2,6}$/'],
+    'portugal' => [ '/^[A-Za-z0-9]{6}$/' ],
+    'slovakia' => ['/^[A-Za-z]{2}$/', '/^[A-Za-z0-9]{5}$/' ], 
+    'slovenia' => [ '/^[A-Za-z]{2}$/', '/^[A-Za-z0-9]{1,3}$/', '/^[A-Za-z0-9]{1,3}$/' ],
+    'spain' => [ '/^[0-9A-Za-z]{5,10}$/' ],
+    'sweden' => [ '/^[A-Za-z]{3}$/', '/^[0-9]{2}[A-Za-z0-9]{1}$/'],
+    'switzerland' => [ '/^[A-Za-z]{2}$/', '/^[0-9]{1,6}$/' ],
   ];
   
   public function get_form_editor_field_title(){
@@ -160,10 +173,10 @@ class GF_Field_License_Plate extends GF_Field {
   public function get_choices(){
     $choices = [
       'austria' => esc_html__('Austria', 'vehicle-form'),
+      'belgium' => esc_html__( 'Belgium', 'vehicle-form' ),
       'bulgaria' => esc_html__('Bulgaria', 'vehicle-form'),
       'croatia' => esc_html__( 'Croatia', 'vehicle-form' ),
       'germany' => esc_html__('Germany', 'vehicle-form'),
-      'romania' => esc_html__('Romania', 'vehicle-form'),
       'cyprus' => esc_html__( 'Cyprus', 'vehicle-form' ),
       'czechrepublic' => esc_html__( 'Czech Republic', 'vehicle-form' ),
       'denmark' => esc_html__( 'Denmark', 'vehicle-form' ),
@@ -173,6 +186,19 @@ class GF_Field_License_Plate extends GF_Field {
       'greece' => esc_html__( 'Greece', 'vehicle-form' ),
       'hungary' => esc_html__( 'Hungary', 'vehicle-form' ),
       'ireland' => esc_html__( 'Ireland', 'vehicle-form' ),
+      'italy' => esc_html__( 'Italy', 'vehicle-form' ),
+      'lithuania' => esc_html__( 'Lithuania', 'vehicle-form' ),
+      'luxembourg' => esc_html__( 'Luxembourg', 'vehicle-form' ),
+      'malta' => esc_html__( 'Malta', 'vehicle-form' ),
+      'netherlands' => esc_html__( 'Netherlands', 'vehicle-form' ),
+      'poland' => esc_html__( 'Poland', 'vehicle-form' ),
+      'portugal' => esc_html__( 'Portugal', 'vehicle-form' ),
+      'romania' => esc_html__('Romania', 'vehicle-form'),
+      'slovakia' => esc_html__('Slovakia', 'vehicle-form' ),
+      'slovenia' => esc_html__( 'Slovenia', 'vehicle-form' ),
+      'spain' => esc_html__( 'Spain', 'vehicle-form' ),
+      'sweden' => esc_html__( 'Sweden', 'vehicle-form' ),
+      'switzerland' => esc_html__( 'Switzerland', 'vehicle-form' ),
     ];
     return $choices;
   }
@@ -257,9 +283,10 @@ class GF_Field_License_Plate extends GF_Field {
     if ( !$test ){
       return $error;
     }
+
   
     $date_string = $test->format( 'm-d-Y' );
-    if ( !$date_string == $recombined ){
+    if ( $date_string !== $recombined ){
       return $error;
     }
     
@@ -300,7 +327,10 @@ class GF_Field_License_Plate extends GF_Field {
     for ( $i=0; $i < count($patterns); $i++ ){
       if ( 1 !== preg_match( $patterns[$i], $value[ $submitted_license_plate_portions[$i] ] )){
         $this->failed_validation = true;
-        $this->validation_message = sprintf( __( '%1$s is not a valid value for that part of the license plate', 'vehicle-form' ), esc_html( $value[ $submitted_license_plate_portions[$i] ] ) );
+        $message = empty( $value[ $submitted_license_plate_portions[$i] ] ) ? 
+          __( 'Every part of the license plate must have a value.', 'vehicle-form' ) :
+          sprintf( __( '%1$s is not a valid value for that part of the license plate', 'vehicle-form' ), esc_html( $value[ $submitted_license_plate_portions[$i] ] ) );
+        $this->validation_message = $message;
         break;
       }
     }
@@ -334,6 +364,7 @@ class GF_Field_License_Plate extends GF_Field {
         $license_plate_conf = esc_html( $value[$id.'.7'] . '-' . $value[$id.'.8'] );
         break;
       case 'france': 
+      case 'netherlands':
         $license_plate = esc_html( implode( '-', [ $value[$id.'.4'], $value[$id.'.5'], $value[$id.'.6'] ] ) );
         $license_plate_conf = esc_html( implode( '-', [ $value[$id.'.7'], $value[$id.'.8'], $value[$id.'.9'] ] ) );
         break;

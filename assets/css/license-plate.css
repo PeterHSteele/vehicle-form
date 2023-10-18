@@ -37,6 +37,10 @@
   font-weight: 400;
 }
 
+.gform_wrapper .gfield--type-license_plate .date-input-container input[type=text]{
+  font-family: "Montserrat", helvetica, sans-serif;
+}
+
 /* country select */
 
 .gfield--type-license_plate .country-select-container{
@@ -86,7 +90,7 @@
 
   display: flex;
   padding: 4px 16px;
-  align-items: stretch;
+  align-items: center;
   border-radius: 10px;
 }
 
@@ -98,9 +102,13 @@
 .gfield--type-license_plate .ginput-license-inner .lp-input input{
   text-align: center;
   border-radius: 10px;
-  border: 2px solid var(--vf-green);  
+  border: 2px solid var(--vf-green) !important;  
   font-size: 14px;
   padding: 4px;
+}
+
+.gfield--type-license_plate .ginput-license-inner .lp-input input::placeholder{
+  color: #9a9a9a;
 }
 
 /*
@@ -137,13 +145,17 @@
 /* Austria */
 
 .gfield--type-license_plate .layout-at .lp-input-5,
-.gfield--type-license_plate .layout-at .lp-input-8{
+.gfield--type-license_plate .layout-at .lp-input-8,
+.gfield--type-license_plate .layout-sk .lp-input-5,
+.gfield--type-license_plate .layout-sk .lp-input-8{
   margin-left: 15%;
   flex: 0 0 40%;
 }
 
 .gfield--type-license_plate .layout-at .lp-input-6,
-.gfield--type-license_plate .layout-at .lp-input-9{
+.gfield--type-license_plate .layout-at .lp-input-9,
+.gfield--type-license_plate .layout-sk .lp-input-6,
+.gfield--type-license_plate .layout-sk .lp-input-9{
   display: none;
 }
 
@@ -172,13 +184,21 @@
   flex: 0 0 29%;
 }
 
-/* Bulgaria, Croatia, Estonia */
+/* Bulgaria, Croatia, Estonia, luxembourg, Portugal, Belgium */
 .gfield--type-license_plate .layout-bg .lp-input-4,
 .gfield--type-license_plate .layout-bg .lp-input-7,
 .gfield--type-license_plate .layout-cr .lp-input-4,
 .gfield--type-license_plate .layout-cr .lp-input-7,
 .gfield--type-license_plate .layout-ee .lp-input-4,
-.gfield--type-license_plate .layout-ee .lp-input-7{
+.gfield--type-license_plate .layout-ee .lp-input-7,
+.gfield--type-license_plate .layout-lu .lp-input-4,
+.gfield--type-license_plate .layout-lu .lp-input-7,
+.gfield--type-license_plate .layout-pt .lp-input-4,
+.gfield--type-license_plate .layout-pt .lp-input-7,
+.gfield--type-license_plate .layout-es .lp-input-4,
+.gfield--type-license_plate .layout-es .lp-input-7,
+.gfield--type-license_plate .layout-be .lp-input-4,
+.gfield--type-license_plate .layout-be .lp-input-7{
   margin: 0 0 0 15%;
   flex: 0 0 50%;
 }
@@ -194,16 +214,38 @@
 .gfield--type-license_plate .layout-ee .lp-input-5,
 .gfield--type-license_plate .layout-ee .lp-input-8,
 .gfield--type-license_plate .layout-ee .lp-input-6,
-.gfield--type-license_plate .layout-ee .lp-input-9{
+.gfield--type-license_plate .layout-ee .lp-input-9,
+.gfield--type-license_plate .layout-lu .lp-input-5,
+.gfield--type-license_plate .layout-lu .lp-input-8,
+.gfield--type-license_plate .layout-lu .lp-input-6,
+.gfield--type-license_plate .layout-lu .lp-input-9,
+.gfield--type-license_plate .layout-pt .lp-input-5,
+.gfield--type-license_plate .layout-pt .lp-input-8,
+.gfield--type-license_plate .layout-pt .lp-input-6,
+.gfield--type-license_plate .layout-pt .lp-input-9,
+.gfield--type-license_plate .layout-es .lp-input-5,
+.gfield--type-license_plate .layout-es .lp-input-8,
+.gfield--type-license_plate .layout-es .lp-input-6,
+.gfield--type-license_plate .layout-es .lp-input-9,
+.gfield--type-license_plate .layout-be .lp-input-5,
+.gfield--type-license_plate .layout-be .lp-input-8,
+.gfield--type-license_plate .layout-be .lp-input-6,
+.gfield--type-license_plate .layout-be .lp-input-9{
   display: none;
 }
 
-/* Cyprus, Finland */
+/* Cyprus, Finland, Lithuania, Malta, Sweden */
 
 .gfield--type-license_plate .layout-cy .lp-input-4,
 .gfield--type-license_plate .layout-cy .lp-input-7,
 .gfield--type-license_plate .layout-fi .lp-input-4,
-.gfield--type-license_plate .layout-fi .lp-input-7{
+.gfield--type-license_plate .layout-fi .lp-input-7,
+.gfield--type-license_plate .layout-lt .lp-input-4,
+.gfield--type-license_plate .layout-lt .lp-input-7,
+.gfield--type-license_plate .layout-mt .lp-input-4,
+.gfield--type-license_plate .layout-mt .lp-input-7,
+.gfield--type-license_plate .layout-se .lp-input-4,
+.gfield--type-license_plate .layout-se .lp-input-7{
   margin: 0 0 0 15%;
   flex: 0 0 30%;
 }
@@ -211,7 +253,13 @@
 .gfield--type-license_plate .layout-cy .lp-input-5,
 .gfield--type-license_plate .layout-cy .lp-input-8,
 .gfield--type-license_plate .layout-fi .lp-input-5,
-.gfield--type-license_plate .layout-fi .lp-input-8{
+.gfield--type-license_plate .layout-fi .lp-input-8,
+.gfield--type-license_plate .layout-lt .lp-input-5,
+.gfield--type-license_plate .layout-lt .lp-input-8,
+.gfield--type-license_plate .layout-mt .lp-input-5,
+.gfield--type-license_plate .layout-mt .lp-input-8,
+.gfield--type-license_plate .layout-se .lp-input-5,
+.gfield--type-license_plate .layout-se .lp-input-8{
   margin: 0 0 0 15%;
   flex: 0 0 30%;
 }
@@ -219,7 +267,13 @@
 .gfield--type-license_plate .layout-cy .lp-input-6,
 .gfield--type-license_plate .layout-cy .lp-input-9,
 .gfield--type-license_plate .layout-fi .lp-input-6,
-.gfield--type-license_plate .layout-fi .lp-input-9{
+.gfield--type-license_plate .layout-fi .lp-input-9,
+.gfield--type-license_plate .layout-lt .lp-input-6,
+.gfield--type-license_plate .layout-lt .lp-input-9,
+.gfield--type-license_plate .layout-mt .lp-input-6,
+.gfield--type-license_plate .layout-mt .lp-input-9,
+.gfield--type-license_plate .layout-se .lp-input-6,
+.gfield--type-license_plate .layout-se .lp-input-9{
   display: none;
 }
 
@@ -308,4 +362,109 @@
 .gfield--type-license_plate .layout-ie .lp-input-9{
   margin-left: 1%;
   flex: 0 0 45%;
+}
+
+/* Italy */ 
+.gfield--type-license_plate .layout-it .lp-input-5,
+.gfield--type-license_plate .layout-it .lp-input-8{
+  margin-left: 1%;
+  flex: 0 0 29%;
+}
+
+.gfield--type-license_plate .layout-it .lp-input-6,
+.gfield--type-license_plate .layout-it .lp-input-9{
+  margin-left: 1%;
+  flex: 0 0 19%;
+}
+
+/* Netherlands */
+
+.gfield--type-license_plate .layout-nl .lp-input-4,
+.gfield--type-license_plate .layout-nl .lp-input-7{
+  margin-left: 15%;
+  flex: 0 0 25%;
+}
+
+.gfield--type-license_plate .layout-nl .lp-input-5,
+.gfield--type-license_plate .layout-nl .lp-input-8,
+.gfield--type-license_plate .layout-nl .lp-input-6,
+.gfield--type-license_plate .layout-nl .lp-input-9{
+  margin-left: 1%;
+  flex: 0 0 25%;
+}
+
+/* Poland */
+
+.gfield--type-license_plate .layout-pl .lp-input-4,
+.gfield--type-license_plate .layout-pl .lp-input-7{
+  margin-left: 15%;
+  flex: 0 0 30%;
+}
+
+.gfield--type-license_plate .layout-pl .lp-input-5,
+.gfield--type-license_plate .layout-pl .lp-input-8{
+  margin-left: 13%;
+  flex: 0 0 40%;
+}
+
+.gfield--type-license_plate .layout-pl .lp-input-6,
+.gfield--type-license_plate .layout-pl .lp-input-9{
+  display: none;
+}
+
+/* Slovakia */
+.gfield--type-license_plate .layout-sk .lp-input-4,
+.gfield--type-license_plate .layout-sk .lp-input-7{
+  margin-left: 9%;
+  flex: 0 0 20;
+}
+
+.gfield--type-license_plate .layout-sk .lp-input-5,
+.gfield--type-license_plate .layout-sk .lp-input-8{
+  margin-left: 15%;
+  flex: 0 0 40%;
+}
+
+.gfield--type-license_plate .layout-sk .lp-input-6,
+.gfield--type-license_plate .layout-sk .lp-input-9{
+  display: none;
+}
+
+/* Slovenia */
+
+.gfield--type-license_plate .layout-sl .lp-input-4,
+.gfield--type-license_plate .layout-sl .lp-input-7{
+  margin-left: 8%;
+  flex: 0 0 20%;
+}
+
+.gfield--type-license_plate .layout-sl .lp-input-5,
+.gfield--type-license_plate .layout-sl .lp-input-8{
+  margin-left: 16%;
+  flex: 0 0 25%;
+}
+
+.gfield--type-license_plate .layout-sl .lp-input-6,
+.gfield--type-license_plate .layout-sl .lp-input-9{
+  margin-left: 8%;
+  flex: 0 0 25%;
+}
+
+/* Switzerland */ 
+
+.gfield--type-license_plate .layout-ch .lp-input-4,
+.gfield--type-license_plate .layout-ch .lp-input-7{
+  margin-left: 10%;
+  flex: 0 0 19%;
+}
+
+.gfield--type-license_plate .layout-ch .lp-input-5,
+.gfield--type-license_plate .layout-ch .lp-input-8{
+  margin-left: 6%;
+  flex: 0 0 50%;
+}
+
+.gfield--type-license_plate .layout-ch .lp-input-6,
+.gfield--type-license_plate .layout-ch .lp-input-9{
+  display: none;
 }

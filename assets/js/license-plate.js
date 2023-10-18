@@ -58,7 +58,7 @@ jQuery(document).ready( function(){
         default:
           placeholder ='';
       }
-      element.setAttribute( 'value', '' );
+      element.value = '';
       element.setAttribute( 'placeholder', placeholder );
       element.setAttribute( 'maxlength', maxlength );
       if ( element.hasAttribute( 'disabled' ) && maxlength !== "0" ){

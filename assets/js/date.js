@@ -60,8 +60,8 @@ jQuery(document).ready( function(){
       startDateText = [ month, day, year ].join( '.' );*/
 
       const endDate = this.mapPlansToTimes[plan]( new Date( startDate )),
-      endMonth = endDate.getMonth() + 1,
-      endDay = endDate.getDate(),
+      endMonth = ('0' + ( endDate.getMonth() + 1 ) ).slice(-2), //add leading "0" to single digit months, i.e. February becomes 02 instead of 2
+      endDay = ('0' + endDate.getDate()).slice(-2), //add leading "0" to single digit days, i.e. the 5th becomes 05 instead of 5
       endYear = endDate.getFullYear(),
       endDateText = [ endMonth, endDay, endYear ].join( '/' );
       this.endDateInput.setAttribute( 'value', endDateText )
