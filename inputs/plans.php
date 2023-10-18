@@ -26,32 +26,6 @@ class GF_Field_Plans extends GF_Field {
   }
 
   public function plan_data(){
-    /*return [
-      [
-        'name' => __( '10 Day Vignette Austria', 'vehicle-form' ),
-        'price' => 12.50,
-        'info' => __( 'Valid immediately or later if desired.', 'vehicle-form' ),
-        'duration' => 'ten-day'
-      ],
-      [
-        'name' => __( '2 Months Vignette Austria', 'vehicle-form'),
-        'price' => 23.60,
-        'info' => __( 'Valid immediately or later if desired.', 'vehicle-form' ),
-        'duration' => 'two-month'
-      ],
-      [
-        'name' => __( 'Annual Vignette Austria 2024', 'vehicle-form' ),
-        'price' => 49.90,
-        'info' => __( 'Valid from December 1st, 2023 - January 31st, 2025' ),
-        'duration' => 'annual'
-      ],
-      [
-        'name' => __( 'Route Toll', 'vehicle-form' ),
-        'price' => 11.50,
-        'info' => 'Valid for 1 year from the date of purchase/start of validity',
-        'duration' => 'single'
-      ]
-    ];*/
     return VEHICLE_FORM_PLANS;
   }
 

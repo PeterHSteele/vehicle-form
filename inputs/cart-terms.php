@@ -68,41 +68,13 @@ class GF_Field_Cart_And_Terms extends GF_Field {
       {FIELD}
       {$validation_message}
     ";
-    //var_dump($this->get_admin_buttons());
+    
     if ( $this->is_form_editor() ){
       $html = $this->get_admin_buttons() . $html;
     }
     
     return $html;
   }
-
-  /*
-  array(24) { 
-    ["input_12"]=> string(10) "motorcycle" 
-    ["input_14"]=> string(7) "ten-day" 
-    ["input_16_1"]=> string(10) "10/09/2023" 
-    ["input_16_2"]=> string(10) "10/19/2023" 
-    ["input_16_3"]=> string(8) "bulgaria" 
-    ["input_16_4"]=> string(8) "12345678" 
-    ["input_16_5"]=> string(0) "" 
-    ["input_16_6"]=> string(0) "" 
-    ["input_16_7"]=> string(8) "12345678" 
-    ["input_16_8"]=> string(0) "" 
-    ["input_16_9"]=> string(0) "" 
-    ["input_18_3"]=> string(0) "" 
-    ["input_18_6"]=> string(0) "" 
-    ["input_19"]=> string(0) "" 
-    ["input_21_1"]=> string(15) "termsconditions" 
-    ["input_21_2"]=> string(10) "newsletter" 
-    ["is_submit_2"]=> string(1) "1" 
-    ["gform_submit"]=> string(1) "2" 
-    ["gform_unique_id"]=> string(0) "" 
-    ["state_2"]=> string(176) "WyJ7XCIyMC4xXCI6XCI5MDYyNmEzYWRlZmQ2OGM2MTQ1MjI0YzA0YmExODY1ZFwiLFwiMjAuMlwiOlwiYjAzMzljNjVjYTA2Yjk3ZWI3YWU2NmQwZmYwN2E4NjZcIn0iLCIzZDdiZGQ4NjkwNjUwMGQ5MTU0NTkyNDcxYTc5YWJjNCJd" 
-    ["gform_target_page_number_2"]=> string(1) "0" 
-    ["gform_source_page_number_2"]=> string(1) "1" 
-    ["gform_field_values"]=> string(0) "" 
-    ["version_hash"]=> string(32) "6329e3791b5e32a32dde8c65f14c7836" 
-  } */
 
   public function validate( $value, $form ){
 

@@ -235,21 +235,6 @@ class GF_Field_License_Plate extends GF_Field {
     return $script;
   }
 
-  /* 
-  array(9) { 
-    ["16.1"]=> string(10) "10/10/2023" 
-    ["16.2"]=> string(0) "" 
-    ["16.3"]=> string(7) "germany" 
-    ["16.4"]=> string(1) "1" 
-    ["16.5"]=> string(2) "ab" 
-    ["16.6"]=> string(4) "1312" 
-    ["16.7"]=> string(1) "1" 
-    ["16.8"]=> string(2) "ab" 
-    ["16.9"]=> string(4) "1312" }
-  */
-
-  //string(10) "10/18/2023";
-
   public function validate_date( $date, $is_start = true ){ 
 
     if ( $is_start ){
