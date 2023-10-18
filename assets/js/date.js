@@ -1,10 +1,5 @@
 jQuery(document).ready( function(){
 
-  function oneDay ( date ) { 
-    date.setDate( date.getDate() + 1 );
-    return date;
-  }
-
   function tenDays( date ){
     date.setDate( date.getDate() + 10 );
     return date;
@@ -28,10 +23,9 @@ jQuery(document).ready( function(){
       this.form = document.querySelector( '.vehicle-rental-form' );
       if ( !this.form ) return;
       this.dateInput = jQuery('.start-date input[type=text]');
+      console.log(this.dateInput);
       this.endDateInput = Array.from( this.form.querySelector('.end-date').children ).find( child => child.tagName == 'INPUT' );
-      //console.log( this.dateInput );
       this.addListeners();
-      //this.addFilters();
       this.setMapPlansToTimes();
       this.initDatePicker()
       jQuery('#ui-datepicker-div').addClass( 'gravity-theme' );
@@ -39,7 +33,6 @@ jQuery(document).ready( function(){
     }
 
     setMapPlansToTimes(){
-      //this.mapPlansToTimes["one-day"] = oneDay
       this.mapPlansToTimes["ten-day"] = tenDays
       this.mapPlansToTimes["two-month"] = twoMonths
       this.mapPlansToTimes["single"] = oneYear
@@ -53,12 +46,7 @@ jQuery(document).ready( function(){
       if ( !plan || Object.keys( this.mapPlansToTimes ).indexOf(plan) < 0 ) return; 
 
       const startDate = new Date( selected );
-      /*month = startDate.getMonth() + 1,
-      day = startDate.getDate(),
-      year = startDate.getFullYear(),
-      time = startDate.getTime(),
-      startDateText = [ month, day, year ].join( '.' );*/
-
+  
       const endDate = this.mapPlansToTimes[plan]( new Date( startDate )),
       endMonth = ('0' + ( endDate.getMonth() + 1 ) ).slice(-2), //add leading "0" to single digit months, i.e. February becomes 02 instead of 2
       endDay = ('0' + endDate.getDate()).slice(-2), //add leading "0" to single digit days, i.e. the 5th becomes 05 instead of 5
@@ -66,13 +54,6 @@ jQuery(document).ready( function(){
       endDateText = [ endMonth, endDay, endYear ].join( '/' );
       this.endDateInput.setAttribute( 'value', endDateText )
       
-    }
-
-    addFilters(){
-      /*gform.addFilter( 'gform_datepicker_options_pre_init', ( options ) => {
-        options.onSelect = this.handleStartDateChange.bind(this);
-        return options
-      })*/
     }
 
     handleChoosePlan( event ){
