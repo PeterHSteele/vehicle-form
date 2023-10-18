@@ -83,5 +83,5 @@ jQuery(document).ready(function(){
     }
   }
 
-  const plans = new PlansInput( vfplans );
+  const plans = new PlansInput( Object.keys( vfplans ).map( key => vfplans[key] ));
 });

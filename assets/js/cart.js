@@ -82,7 +82,8 @@ document.addEventListener( 'DOMContentLoaded', function(){
   }
 
   class VehicleFormCart {
-    constructor(){
+    constructor( plans ){
+      this.plans = plans;
       this.form = document.querySelector( '.vehicle-rental-form' );
       if ( !this.form ) return;
       this.field = this.form.querySelector( '.gfield--type-cart_and_terms' );
@@ -98,7 +99,7 @@ document.addEventListener( 'DOMContentLoaded', function(){
     }
 
     handlePlanChoice( event ){
-      const plan = vfplans.find( plan => event.detail.duration == plan.duration );
+      const plan = this.plans.find( plan => event.detail.duration == plan.duration );
       if ( !plan ) return;
       plan.price = Number(plan.price).toFixed(2);
       this.chosenPlan.children.item(0)?.remove();
@@ -118,6 +119,6 @@ document.addEventListener( 'DOMContentLoaded', function(){
     }
   }
 
-  const cart = new VehicleFormCart()
+  const cart = new VehicleFormCart( Object.keys( vfplans ).map( key => vfplans[key] ))
 
 });
