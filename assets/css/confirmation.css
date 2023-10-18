@@ -1,0 +1,28 @@
+.vf-confirmation .order-summary-wrap{
+  padding: 1.5em;
+  background: rgb(246, 247, 251);
+  margin-top: 16px;
+}
+
+.vf-confirmation .order-summary{
+  padding: 1em;
+  border-radius: .5em;
+  background: #fff;
+}
+
+.vf-confirmation .order-summary h3{
+  color: #222430;
+  position: relative;
+  padding-bottom: .5em;
+  text-align: center;
+}
+
+.vf-confirmation .order-summary h3:after{
+  position: absolute;
+  content: '';
+  top: 100%;
+  height: 3px;
+  width: 20%;
+  left: 40%;
+  background-color: rgb( 91, 200, 154 );
+}
